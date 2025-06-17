@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điều khiển IoT nông nghiệp</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+</head>
+
+<body>
+    <div class="bg-image"></div>
+    <div class="bg-text">
+        <h1 class="heading">Điều khiển IoT nông nghiệp</h1>
+    <div class="sensor-data">
+        <label>Nhiệt độ:</label><span id="temp">N/A</span><br>
+        <label>Độ ẩm không khí:</label><span id="humi">N/A</span><br>
+        <label>Độ ẩm đất:</label><span id="soil">N/A</span><br>
+        <label>Cường độ ánh sáng:</label><span id="light">N/A</span>
+    </div>
+    <div class="mode-group">
+        <label><input type="radio" name="mode" id="mode_manual" value="manual" onclick="setMode(true)" checked>
+            Manual</label>
+        <label><input type="radio" name="mode" id="mode_auto" value="auto" onclick="setMode(false)"> Auto</label>
+    </div>
+    <div class="control-group">
+        <button id="led_on" onclick="sendRelayMessage('relay_led',0, 1)">Đèn ON</button>
+        <button id="led_off" onclick="sendRelayMessage('relay_led',0, 0)">Đèn OFF</button>
+        <label class="status-label">Đèn<span id="relay_led_state"> OFF</span></label>
+    </div>
+    <div class="control-group">
+        <button id="fan_on" onclick="sendRelayMessage('relay_fan',1, 1)">Quạt ON</button>
+        <button id="fan_off" onclick="sendRelayMessage('relay_fan',1, 0)">Quạt OFF</button>
+        <label class="status-label">Quạt<span id="relay_fan_state"> OFF</span></label>
+    </div>
+    <div class="control-group">
+
+        <button id="pump_on" onclick="sendRelayMessage('relay_pump',2, 1)">Bơm ON</button>
+        <button id="pump_off" onclick="sendRelayMessage('relay_pump',2, 0)">Bơm OFF</button>
+        <label class="status-label"> Bơm<span id="relay_pump_state"> OFF</span></label>
+    </div>
+    <div>
+        <label>Ngưỡng ánh sáng (lux):</label>
+        <input type="number" id="lux_threshold" placeholder="50" value="50" required>
+        <label>Ngưỡng nhiệt độ (°C):</label>
+        <input type="number" id="temp_threshold" placeholder="30" value="30" required>
+        <label>Ngưỡng độ ẩm đất (%):</label>
+        <input type="number" id="soil_threshold" placeholder="20" value="20" required>
+        <button onclick="sendConfig()">Cập nhật ngưỡng</button>
+    </div>
+    <div>
+        <label for="message">Tin nhắn JSON:</label>
+        <input type="text" id="message" placeholder="Nhập tin nhắn JSON">
+        <button onclick="sendMessage()">Gửi</button>
+    </div>
+    <div id="status">Đang kết nối...</div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

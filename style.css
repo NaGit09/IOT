@@ -1,0 +1,79 @@
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1749880783183-0a15dfa9e0c0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") ;
+
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+.heading {
+  text-align: center;
+}
+.control-group {
+  margin: 10px 0;
+}
+.status-label {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.sensor-data {
+  margin: 15px 0;
+}
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+.button_on {
+background-color: green;
+}
+.button_off {
+  background-color: red;
+}
+input[type="number"] {
+  width: 100px;
+  margin: 5px;
+}
+.mode-group {
+  margin: 15px 0;
+}
+.mode-group label {
+  margin-right: 20px;
+}
